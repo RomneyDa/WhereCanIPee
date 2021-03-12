@@ -9,27 +9,28 @@
     <script src="/scripts/urinal_scripts.js"></script>
 </head>
 <body>
+    <h1>Where can I pee?</h1>
     <div class="form-container">
         <form onsubmit="return GenerateUrinals()" id="setup-form" name="setup_form">
             <label for="number-of-urinals">Number of Urinals</label>
-            <input name="number_of_urinals" type="number" id="number-of-urinals" min=1 max=10 value=5 /><br/>
+            <input onchange="GenerateUrinals()" name="number_of_urinals" type="number" id="number-of-urinals" min=1 max=15 value=7 /><br/>
             <label for="check-symmetry">Check Symmetry</label>
-            <input type="checkbox" id="check-symmetry"/><br/>
-            <button type="submit">Generate Bathroom Wall</button>
+            <input name="check_symmetry" onclick="WhereCanIPee()" type="checkbox" id="check-symmetry" checked="true"/><br/>
+            <!-- <button type="submit" id="submit-button">Generate Bathroom Wall</button> -->
         </form>
     </div>
-    <div id="bathroom-wall">
+    <h2>Click a urinal to toggle urinal occupation</h2>
+    <br/>
+    <div class="urinals" id="bathroom-wall">
 
     </div>
-    <div id="results-wall">
+    <br/>
+    <div class="urinals" id="results-wall">
 
     </div>
 
-    <!-- <script>
-        var form = document.getElementById("setup-form");
-        function handleForm(event) { event.preventDefault(); } 
-        form.addEventListener('submit', handleForm);
-    </script> -->
-    
+    <script>
+        GenerateUrinals();
+    </script>
 </body>
 </html>

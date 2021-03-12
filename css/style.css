@@ -1,3 +1,7 @@
+body {
+  text-align: center;
+}
+
 .free_urinal {
   color: white;
   background-color: black;
@@ -16,4 +20,30 @@
 .good_urinal {
   color: white;
   background-color: green;
+}
+
+.urinals button {
+  width: 50px;
+  height: 100px;
+  margin: 5px 5px;
+}
+
+#submit-button {
+  font-size: 2rem;
+  border-radius: 12px;
+  padding: 5%;
+  border-style: none;
+  color: white;
+  background-color: rgb(10, 65, 10);
+}
+
+form {
+  font-size: 2rem;
+  border-style: solid;
+  padding: 10px;
+}
+
+form input {
+  font-size: 2rem;
+  width: 50px;
 }
