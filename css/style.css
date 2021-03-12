@@ -2,24 +2,46 @@ body {
   text-align: center;
 }
 
+button {
+  cursor: grab;
+}
+
 .free_urinal {
   color: white;
   background-color: black;
 }
 
-.occupied_urinal {
+.not_free_urinal {
   color: black;
   background-color: white;
 }
 
+.occupied_urinal {
+  background-image: url("/images/OccupiedUrinal.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.empty_urinal {
+  background-image: url("/images/EmptyUrinal.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .bad_urinal {
-  color: black;
-  background-color: red;
+  background-image: url("/images/BadUrinal.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .good_urinal {
-  color: white;
-  background-color: green;
+  background-image: url("/images/GoodUrinal.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .urinals button {

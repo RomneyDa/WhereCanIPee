@@ -4,20 +4,31 @@ function GenerateUrinals(){
 
     //console.log("button clicked");
     document.getElementById("bathroom-wall").innerHTML = '';
+    document.getElementById("results-wall").innerHTML = '';
 
     let num_urinals;
     num_urinals = document.forms[0].number_of_urinals.value;
     //document.getElementById("bathroom-wall");
     //val = document.getElementByID("");
     for(var urinal = 0; urinal < num_urinals; urinal++){
+        //console.log(urinal);
         let urinal_element;
         urinal_element = document.createElement('button');
         urinal_element.id = "urinal_" + urinal;
-        //urinal_element.textContent = urinal + 1;
+        urinal_element.textContent = urinal + 1;
         urinal_element.setAttribute("onclick", "UrinalClick(" + "'" + urinal_element.id + "');");
-        urinal_element.className = "bad_urinal";
+        urinal_element.className = "free_urinal";
         document.getElementById("bathroom-wall").appendChild(urinal_element);
+
+        results_urinal = document.createElement('button');
+        results_urinal.id = "results_urinal_" + urinal;
+        //results_urinal.textContent = urinal;
+        //results_urinal.setAttribute("onclick", "");
+        results_urinal.className = "bad_urinal";
+        document.getElementById("results-wall").appendChild(results_urinal);
+
     }
+    //console.log(num_urinals);
 
     WhereCanIPee();
 
@@ -26,10 +37,10 @@ function GenerateUrinals(){
 
 function UrinalClick(urinal_id) {
     //console.log(urinal_id);
-    if (document.getElementById(urinal_id).className == "occupied_urinal"){
-        document.getElementById(urinal_id).className = "empty_urinal";
+    if (document.getElementById(urinal_id).className == "free_urinal"){
+        document.getElementById(urinal_id).className = "not_free_urinal";
     } else {
-        document.getElementById(urinal_id).className = "occupied_urinal";
+        document.getElementById(urinal_id).className = "free_urinal";
     }
     //console.log(document.getElementById(urinal_id));
 
@@ -45,7 +56,7 @@ function WhereCanIPee(){
 
     // CREATE ARRAY REPRESENTING URINAL OCCUPATION
     for(let urinal = 0; urinal < wall.children.length; urinal++){
-        if(wall.children[urinal].className !== "occupied_urinal"){
+        if(wall.children[urinal].className == "free_urinal"){
             urinals_in.push(0);
         } else {
             urinals_in.push(1);
@@ -56,9 +67,11 @@ function WhereCanIPee(){
     let symmetry_out = new Array(wall.children.length).fill(0);
 
     if(urinals_in.reduce((a, b) => a + b, 0) === urinals_in.length){
-        //console.log("URINALS FULL");
-        for(let urinal = 0; urinal < wall.children.length; urinal++){
-            wall.children[urinal].className = "occupied_urinal";
+        console.log("URINALS FULL");
+        let results_wall = document.getElementById("results-wall");
+        //console.log(symmetry_out);
+        for(let urinal = 0; urinal < results_wall.children.length; urinal++){
+            results_wall.children[urinal].className = "bad_urinal";
         }
     } else {
 
@@ -109,7 +122,7 @@ function WhereCanIPee(){
             }
         }
         //console.log("longest white gap is " + gap_length + " starting at " + start_array);
-        let use_center_gaps = true;
+
         for(let start_index = 0; start_index < start_array.length ; start_index++){
             if(gap_length === urinals_in.length){
                 if(gap_length % 2 === 0){
@@ -123,13 +136,11 @@ function WhereCanIPee(){
                 spacing_out[0] = 0;
             } else if(start_array[start_index] === 0){
             //console.log("longest gap on left side");
-                use_center_gaps = false;
                 spacing_out[0] = 1;
             } else if(start_array[start_index] + gap_length === urinals_in.length){
                 //console.log("longest gap on right side");
-                use_center_gaps = false;
                 spacing_out[wall.children.length - 1] = 1;
-            } else if(use_center_gaps){
+            } else {
                 if(gap_length % 2 === 0){
                     //console.log("even gap length. center of gap = " + (gap_length/2 - 1) + " and " + gap_length/2);
                     spacing_out[start_array[start_index] + (gap_length/2 - 1)] = 1;
@@ -142,15 +153,16 @@ function WhereCanIPee(){
         }
 
         // APPLY STYLES
-        let urinals_out = arrayOR(spacing_out, symmetry_out);
-        for(let urinal = 0; urinal < wall.children.length; urinal++){
-            if(urinals_in[urinal] === 1){
-                wall.children[urinal].className = "occupied_urinal";
-            } else 
-            if(urinals_out[urinal] === 0){
-                wall.children[urinal].className = "bad_urinal";
+        let results_wall = document.getElementById("results-wall");
+        let urinal_out = arrayOR(spacing_out, symmetry_out);
+        for(let urinal = 0; urinal < results_wall.children.length; urinal++){
+            // if(urinal_in[urinal] === 1){
+            //     results_wall.children[urinal].className = "occupied_urinal";
+            // } else 
+            if(urinal_out[urinal] === 0){
+                results_wall.children[urinal].className = "bad_urinal";
             } else {
-                wall.children[urinal].className = "good_urinal";
+                results_wall.children[urinal].className = "good_urinal";
             }
         }
 

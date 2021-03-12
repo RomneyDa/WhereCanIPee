@@ -13,15 +13,19 @@
     <div class="form-container">
         <form onsubmit="return GenerateUrinals()" id="setup-form" name="setup_form">
             <label for="number-of-urinals">Number of Urinals</label>
-            <input onchange="GenerateUrinals()" name="number_of_urinals" type="number" id="number-of-urinals" min=1 max=15 value=7 /><br/>
+            <input onchange="GenerateUrinals()" name="number_of_urinals" type="number" id="number-of-urinals" min=1 max=10 value=7 /><br/>
             <label for="check-symmetry">Check Symmetry</label>
             <input name="check_symmetry" onclick="WhereCanIPee()" type="checkbox" id="check-symmetry" checked="true"/><br/>
             <!-- <button type="submit" id="submit-button">Generate Bathroom Wall</button> -->
         </form>
     </div>
-    <h2>Click the urinals to toggle urinal occupation</h2>
+    <h2>Click black buttons to toggle urinal occupation</h2>
     <br/>
-    <div class="urinals" id="bathroom-wall">
+    <div class="urinal-buttons" id="bathroom-wall">
+
+    </div>
+    <br/>
+    <div class="urinals" id="results-wall">
 
     </div>
 
