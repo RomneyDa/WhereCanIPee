@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where Can I Pee?</title>
+    <link rel="stylesheet" href="\css\style.css">
+    <script src="/scripts/urinal_scripts.js"></script>
+</head>
+<body>
+    <div class="form-container">
+        <form onsubmit="return GenerateUrinals()" id="setup-form" name="setup_form">
+            <label for="number-of-urinals">Number of Urinals</label>
+            <input name="number_of_urinals" type="number" id="number-of-urinals" min=1 max=10 value=5 /><br/>
+            <label for="check-symmetry">Check Symmetry</label>
+            <input type="checkbox" id="check-symmetry"/><br/>
+            <button type="submit">Generate Bathroom Wall</button>
+        </form>
+    </div>
+    <div id="bathroom-wall">
+
+    </div>
+    <div id="results-wall">
+
+    </div>
+
+    <!-- <script>
+        var form = document.getElementById("setup-form");
+        function handleForm(event) { event.preventDefault(); } 
+        form.addEventListener('submit', handleForm);
+    </script> -->
+    
+</body>
+</html>

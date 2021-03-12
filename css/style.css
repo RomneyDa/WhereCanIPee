@@ -1,0 +1,19 @@
+.free_urinal {
+  color: white;
+  background-color: black;
+}
+
+.occupied_urinal {
+  color: black;
+  background-color: white;
+}
+
+.bad_urinal {
+  color: black;
+  background-color: red;
+}
+
+.good_urinal {
+  color: white;
+  background-color: green;
+}
